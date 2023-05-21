@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #212121;
+}
+.music-container{
+    width: 500px;
+    height: 800px;
+    background-color: rgb(213, 213, 255);
+    border-radius: 2px;
+}
+.btn-circle{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(11, 11, 146);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    color: white;
+    cursor: pointer;
+}
+.btn-play{
+    width: 70px;
+    height: 70px;
+    background-color: rgb(4, 4, 95);
+}
+.btn-play:hover{
+    background-color: rgb(60, 60, 207);
+}
+.up, .mid, .midal, .bottom{
+    width: 100%;
+    padding: 3% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mid{
+    justify-content: center;
+    padding: 7% 5%;
+    flex-direction: column;
+}
+.bottom{
+    justify-content: space-evenly;
+    padding: 2% 5%;
+}
+.square, .arrow{
+    color: white;
+}
+.blue-img{
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 10px solid rgb(11, 11, 146);
+    object-fit: cover;
+}
+.music-title{
+    margin-top: 50px;
+    opacity: 0.7;
+}
+.musicians{
+    font-weight: 300;
+    opacity: 0.4;
+    text-align: center;
+}
+.line{
+    -webkit-appearance: none;
+    width: 400px;
+    height: 5px;
+    background-color: rgb(11, 11, 146);
+    border-radius: 20px;
+    margin: 10px auto;
+    position: relative;
+    cursor: pointer;
+}
+.line::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 5px solid white;
+    background-color: rgb(11, 11, 146);
+    cursor: pointer;
+}
+@media (max-width: 700px){
+    .music-container{
+        width: 80vw;
+        height: 80vh;
+    }
+    .blue-img{
+        width: 35vw;
+        height: 35vw;
+    }
+}

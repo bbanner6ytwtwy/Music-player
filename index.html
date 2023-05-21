@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music X Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="music-container">
+        <div class="up">
+            <div class="btn-circle">
+                <i class="square fa-solid fa-square"></i>
+            </div>
+            <div class="btn-circle">
+                <i class="arrow fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+        <div class="mid">
+            <img src="blue-img.jpg" class="blue-img" id="img" alt="blue img">
+            <h2 class="music-title" id="mst">I Know God Did</h2>
+            <p class="musicians" id="m">Dj Khalid ft a bunch of other people and John legend</p>
+        </div>
+        <div class="midal">
+            <input class="line" type="range" name="" id="progress" value="0">
+        </div>
+        <audio  id="song" src="dsong.mp3" type="audio/mpeg" >
+            </audio>
+        <div class="bottom">
+                <div class="btn-circle" onclick="back()">
+                    <i class="fa-solid fa-backward-fast"></i>
+                </div>
+                <div onclick="playPause()" id="which" class="btn-circle btn-play">
+                    <i id="ctrlIcon" class="play fa-2x fa-solid fa-play"></i>
+                </div>
+                <div class="btn-circle" onclick="change()">
+                    <i class="fa-solid fa-forward-fast"></i>
+                </div>
+        </div>
+    </div>
+
+    <script>
+       const progress = document.getElementById("progress")
+       const song = document.getElementById("song")
+       const ctrlIcon = document.getElementById("ctrlIcon")
+       const which = document.getElementById("which")
+       const mst = document.getElementById("mst")
+       const m = document.getElementById("m")
+       const img = document.getElementById("img")
+       
+       song.onloadedmetadata = ()=>{
+           progress.max = song.duration;
+           progress.value = song.currentTime;
+       }
+
+       function playPause(){
+          ctrlIcon.classList.contains("fa-pause") ? song.pause() & ctrlIcon.classList.remove("fa-pause") & ctrlIcon.classList.add("fa-play"): song.play() & ctrlIcon.classList.remove("fa-play") & ctrlIcon.classList.add("fa-pause");
+       }
+
+       song.play()&&setInterval(()=>{
+           progress.value = song.currentTime;
+       }, 500)
+
+       progress.onchange = ()=>{
+           song.play();
+           song.currentTime = progress.value
+           ctrlIcon.classList.add("fa-pause");
+           ctrlIcon.classList.remove("fa-play");
+       }
+       change = ()=>{
+           song.src = "dsong1.mp3";
+           ctrlIcon.classList.remove("fa-pause");
+           ctrlIcon.classList.add("fa-play");
+           mst.innerHTML = "Who Do You Blame"
+           m.innerHTML = "Saint JHN"
+           img.src= "blue-img1.jpg"
+       }
+       back = ()=>{
+           song.src = "dsong.mp3";
+           ctrlIcon.classList.remove("fa-pause");
+           ctrlIcon.classList.add("fa-play");
+           mst.innerHTML = "I Know God Did"
+           m.innerHTML = "Dj Khalid ft a bunch of other people and John legend"
+           img.src= "blue-img.jpg"
+       }
+    </script>
+</body>
+</html>
